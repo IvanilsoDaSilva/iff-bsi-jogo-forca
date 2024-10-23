@@ -15,7 +15,7 @@ public abstract class LetraFactoryImpl implements LetraFactory {
 	 * @return Letra buscada
 	 */
 	public final Letra getLetra(char codigo) {
-		return pool[codigo];
+		return pool[Character.toUpperCase(codigo)-'A'];
 	}
 	
 	@Override

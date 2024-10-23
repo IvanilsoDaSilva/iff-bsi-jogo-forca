@@ -14,12 +14,12 @@ public class Palavra {
 	
 	private Palavra(long id, String palavra, Tema tema) {
 		this.id = id;
+		this.tema = tema; 
 		
+		letras =  new Letra[palavra.length()];
 		for (char string : palavra.toCharArray()) {
 			
 		}
-		
-		this.tema = tema; 
 	}
 	
 	public Palavra criar(long id, String palavra, Tema tema) {
