@@ -32,11 +32,7 @@ public class BonecoImagem implements Boneco {
 	public static BonecoImagem getSoleInstance() {
 		return soleInstance();
 	}
-	
-	@Override
-	public Boneco getBoneco() {
-		return this.getSoleInstance();
-	}
+		
 	
 	@Override
 	public void exibir(Object contexto, int partes) {

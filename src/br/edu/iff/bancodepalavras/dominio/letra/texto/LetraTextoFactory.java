@@ -2,10 +2,9 @@ package br.edu.iff.bancodepalavras.dominio.letra.texto;
 
 import br.edu.iff.bancodepalavras.dominio.letra.Letra;
 import br.edu.iff.bancodepalavras.dominio.letra.LetraFactoryImpl;
-import br.edu.iff.bancodepalavras.dominio.letra.imagem.LetraImagem;
 
 public class LetraTextoFactory extends LetraFactoryImpl {
-	private static LetraTextoFactory soleInstance = null;
+	private static LetraTextoFactory soleInstance;
 	
 	/**
 	 * O construtor e privado para apenas a proprica classe criar uma instancia unica de si (Singleton)
@@ -14,15 +13,9 @@ public class LetraTextoFactory extends LetraFactoryImpl {
 	 */
 	private LetraTextoFactory() {
 		super();
-		this.encoberta = new LetraImagem('_');
+		this.encoberta = new LetraTexto('*');
 	}
 	
-	private void setEncoberta(LetraTexto letra) {
-		if (Character.toUpperCase(letra.getCodigo()) < 26 - 'A' || Character.toUpperCase(letra.getCodigo()) > 0 - 'A') {
-			throw new IllegalArgumentException("A letra coberta não pode ser um caracter entre A e Z");
-		}
-		this.encoberta = letra;
-	}
 
 	/**
 	 * Obtem uma instancia unica de LetraTextoFactory
@@ -32,13 +25,14 @@ public class LetraTextoFactory extends LetraFactoryImpl {
 	 */
 	public static LetraTextoFactory getSoleInstance() {
         if (soleInstance == null) {
-        	return soleInstance = new LetraTextoFactory();
+        	soleInstance = new LetraTextoFactory();
+			return soleInstance;
         }
         return soleInstance;
 	}
 	
 	@Override
-	public Letra criarLetra(char codigo) {
+	public Letra criarLetra(char codigo) { //Rezo para que esteja certo, Verifique
         int index = Character.toUpperCase(codigo) - 'A'; // Índice correspondente no array
 
         // Verifica se o código está dentro do intervalo A-Z
